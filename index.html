@@ -1214,10 +1214,7 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
 });
 
   (structure.ups || []).forEach(a => pbUpsHeader += `<th class="px-2 py-2">${a.name}</th>`);
-  // jika ada trial, paparkan juga kolum trial
-  if (structure.trial && structure.trial.length) {
-    structure.trial.forEach(t => pbUpsHeader += `<th class="px-2 py-2">${t.name}</th>`);
-  }
+  
   // Tambah header ringkasan ETR dan gred
   pbUpsHeader += `<th class="px-2 py-2 font-bold text-blue-600">PB(40%)</th><th class="px-2 py-2 font-bold text-blue-600">UPS(20%)</th><th class="px-2 py-2 font-bold text-green-600">Jumlah(60%)</th></tr></thead>`;
 
@@ -1285,14 +1282,7 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
       const val = studentScores[a.name];
       rowHtml += `<td class="px-2 py-2">${val === null || val === undefined ? '' : val}</td>`;
     });
-
-    // Trial cells (jika ada)
-    if (structure.trial && structure.trial.length) {
-      structure.trial.forEach(t => {
-        const v = studentScores[t.name];
-        rowHtml += `<td class="px-2 py-2">${v === null || v === undefined ? '' : v}</td>`;
-      });
-    }
+ 
 
     // Jml PB / Jml UPS / Akhir
     rowHtml += `<td class="px-2 py-2 font-bold text-blue-600">${pbVal.toFixed(2)}</td>`;
@@ -1310,6 +1300,10 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
   structure.topikal.forEach(a => {
     topikalHeader += `<th class="px-2 py-2">${a.name}(Mrk/%)</th>`;
   });
+// jika ada trial, paparkan juga kolum trial
+  if (structure.trial && structure.trial.length) {
+    structure.trial.forEach(t => topikalHeader += `<th class="px-2 py-2">${t.name}</th>`);
+  }
   // Tambah lajur ringkasan ETR1/ETR2/Avg dan gred purata/status
   topikalHeader += `<th class="px-2 py-2 font-bold text-purple-600">UT(40%)</th><th class="px-2 py-2 font-bold text-purple-600">ETR1</th><th class="px-2 py-2 font-bold text-purple-600">ETR2</th><th class="px-2 py-2 font-bold text-red-600">ETR Avg</th><th class="px-2 py-2 font-bold text-red-600">Gred Avg</th><th class="px-2 py-2 font-bold text-red-600">Lulus?</th></tr></thead>`;
 
@@ -1345,6 +1339,13 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
       }
       topikalBody += `<td class="px-2 py-2">${scoreDisplay} <span class="text-xs text-slate-500">${percentageDisplay}</span></td>`;
     });
+// Trial cells (jika ada)
+    if (structure.trial && structure.trial.length) {
+      structure.trial.forEach(t => {
+        const v = studentScores[t.name];
+        rowHtml += `<td class="px-2 py-2">${v === null || v === undefined ? '' : v}</td>`;
+      });
+}
 
     topikalBody += `<td class="px-2 py-2 font-bold text-purple-600">${utVal.toFixed(1)}</td>`;
     topikalBody += `<td class="px-2 py-2 font-bold text-purple-600">${Number(etr1).toFixed(1)}</td>`;
@@ -2161,4 +2162,3 @@ function renderClassAnalysis() {
     </script>
 </body>
 </html>
-
