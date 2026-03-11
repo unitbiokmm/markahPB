@@ -1993,6 +1993,21 @@ function renderClassAnalysis() {
 			<h2 style="font-size:16px;font-weight:bold;margin-bottom:8px;">Pensyarah: ${reportLecturerNameEl.textContent || ''}</h2>
                         ${isTopikal ? topikalReportDisplay.innerHTML : pbUpsReportDisplay.innerHTML}
                     </div>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+		<div style="margin-top: 10px; text-align: left;font-size:10px;font-weight:bold;">
+          	<p> Disediakan oleh: ${reportLecturerNameEl.textContent || ''}</p>
+          	<p><strong>Tarikh:</strong> ${currentDate}</p>
+          	<p style="margin-top: 5px;"><em>Tandatangan</em></p>
+          	<p style="margin-top: 10px;"><em>__________________________</em></p>
+        	</div>
+                <div class="right-text">
+		<div style="margin-top: 5px; text-align: left;font-size:10px;font-weight:bold;">
+          	<p> Disahkan oleh: </p>
+          	<p><strong>Tarikh:</p>
+          	<p style="margin-top: 5px;"><em>Tandatangan</em></p>
+          	<p style="margin-top: 10px;"><em>__________________________</em></p>
+        	</div>
+		</div>
                 `;
                 printContainer.innerHTML = html;
             }
