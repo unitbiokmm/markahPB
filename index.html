@@ -1343,7 +1343,7 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
     if (structure.trial && structure.trial.length) {
       structure.trial.forEach(t => {
         const v = studentScores[t.name];
-        rowHtml += `<td class="px-2 py-2">${v === null || v === undefined ? '' : v}</td>`;
+        topikalBody += `<td class="px-2 py-2">${v === null || v === undefined ? '' : v}</td>`;
       });
 }
 
