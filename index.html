@@ -1301,11 +1301,12 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
   // --- Topikal report (tambah ETR1/ETR2/Avg jika mahu) ---
   let topikalHeader = `<thead class="text-xs text-slate-700 uppercase bg-slate-50"><tr><th class="px-2 py-2">Bil</th><th class="px-2 py-2">Nama</th>`;
   structure.topikal.forEach(a => {
-    topikalHeader += `<th class="px-2 py-2">${a.name}(Mrk/%)</th>`;
+    topikalHeader += `<th class="px-2 py-2">${a.name}(%)</th>`;
   });
-			// jika ada trial, paparkan juga kolum trial
-  if (structure.trial && structure.trial.length) {
+// jika ada trial, paparkan juga kolum trial
+if (structure.trial && structure.trial.length) {
     structure.trial.forEach(t => topikalHeader += `<th class="px-2 py-2">${t.name}</th>`);
+  }
   // Tambah lajur ringkasan ETR1/ETR2/Avg dan gred purata/status
   topikalHeader += `<th class="px-2 py-2 font-bold text-purple-600">UT(40%)</th><th class="px-2 py-2 font-bold text-purple-600">ETR1</th><th class="px-2 py-2 font-bold text-purple-600">ETR2</th><th class="px-2 py-2 font-bold text-red-600">ETR Avg</th><th class="px-2 py-2 font-bold text-red-600">Gred Avg</th><th class="px-2 py-2 font-bold text-red-600">Lulus?</th></tr></thead>`;
 
@@ -1341,13 +1342,13 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
       }
       topikalBody += `<td class="px-2 py-2">${scoreDisplay} <span class="text-xs text-slate-500">${percentageDisplay}</span></td>`;
     });
-	  // Trial cells (jika ada)
+    // Trial cells (jika ada)
     if (structure.trial && structure.trial.length) {
       structure.trial.forEach(t => {
         const v = studentScores[t.name];
         topikalBody += `<td class="px-2 py-2">${v === null || v === undefined ? '' : v}</td>`;
       });
-
+    }
     topikalBody += `<td class="px-2 py-2 font-bold text-purple-600">${utVal.toFixed(1)}</td>`;
     topikalBody += `<td class="px-2 py-2 font-bold text-purple-600">${Number(etr1).toFixed(1)}</td>`;
     topikalBody += `<td class="px-2 py-2 font-bold text-purple-600">${Number(etr2).toFixed(1)}</td>`;
@@ -1360,7 +1361,6 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
   let classPNGK = (totalGradePoints / (students.length || 1)).toFixed(2);
   topikalReportDisplay.innerHTML = `<div class="overflow-x-auto"><table class="w-full text-sm text-left text-slate-500">${topikalHeader}${topikalBody}</table></div><div class="mt-4 text-right"><h4 class="text-lg font-bold text-slate-800">Purata Nilai Gred Kelas (PNGK): <span class="text-red-600">${classPNGK}</span></h4></div>`;
 }
-
 
             function renderDashboard() {
                 // Generate tables for SES and SDS separately
