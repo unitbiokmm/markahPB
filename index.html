@@ -1986,6 +1986,11 @@ function renderClassAnalysis() {
             }
 
             function updatePrintableArea() {
+				const currentDate = new Date().toLocaleDateString("ms-MY", {
+    			day: "numeric",
+    			month: "long",
+    			year: "numeric",
+  				});
                 const isTopikal = !topikalReportDisplay.classList.contains('hidden');
                 const html = `
                     <div>
