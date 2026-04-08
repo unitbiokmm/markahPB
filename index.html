@@ -1249,7 +1249,7 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
     const total = scoreData.total ?? '';
     const weighted = (total === '')
       ? ''
-      : `(${((total / a.fullMarks) * a.weightage).toFixed(2)}%)`;
+      : `(${((total / a.fullMarks) * a.weightage).toFixed(1)}%)`;
 
     rowHtml += `
       <td class="px-2 py-2 font-medium">
@@ -1285,9 +1285,9 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
  
 
     // Jml PB / Jml UPS / Akhir
-    rowHtml += `<td class="px-2 py-2 font-bold text-blue-600">${pbVal.toFixed(2)}</td>`;
-    rowHtml += `<td class="px-2 py-2 font-bold text-blue-600">${upsVal.toFixed(2)}</td>`;
-    rowHtml += `<td class="px-2 py-2 font-bold text-green-600">${akhirVal.toFixed(2)}</td>`;
+    rowHtml += `<td class="px-2 py-2 font-bold text-blue-600">${pbVal.toFixed(1)}</td>`;
+    rowHtml += `<td class="px-2 py-2 font-bold text-blue-600">${upsVal.toFixed(1)}</td>`;
+    rowHtml += `<td class="px-2 py-2 font-bold text-green-600">${akhirVal.toFixed(1)}</td>`;
 
     rowHtml += `</tr>`;
     pbUpsBody += rowHtml;
