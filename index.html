@@ -1265,7 +1265,7 @@ else { reportLecturerNameEl.textContent = state.user.full_name; }
     const scoreDisplay = (score === null || score === undefined) ? '' : score;
     const weightedScore = (score === null || score === undefined)
       ? ''
-      : `(${((score / a.fullMarks) * a.weightage).toFixed(2)}%)`;
+      : `(${((score / a.fullMarks) * a.weightage).toFixed(1)}%)`;
 
     rowHtml += `
       <td class="px-2 py-2">
